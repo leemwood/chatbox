@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { type Config, ModelProviderEnum, type SessionSettings, type Settings, Theme } from './types'
+import { type Config, ModelProviderEnum, type SessionSettings, type Settings, Theme, WatchUIMode } from './types'
 
 export function settings(): Settings {
   return {
@@ -145,6 +145,14 @@ export function settings(): Settings {
     skills: {
       enabledSkillNames: [],
       translationEnabled: true,
+    },
+
+    // 手表UI适配设置
+    watchAdaptation: {
+      enabled: true,
+      mode: WatchUIMode.Auto,
+      scale: 1.3,
+      autoDetect: true,
     },
   }
 }

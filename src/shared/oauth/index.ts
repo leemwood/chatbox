@@ -11,6 +11,15 @@ export interface OAuthProviderInfo {
   flowType: 'callback' | 'code-paste' | 'device-code'
 }
 
+export enum OAuthIpcChannels {
+  LOGIN = 'oauth:login',
+  START_LOGIN = 'oauth:start-login',
+  EXCHANGE_CODE = 'oauth:exchange-code',
+  START_DEVICE_FLOW = 'oauth:start-device-flow',
+  WAIT_FOR_DEVICE_TOKEN = 'oauth:wait-for-device-token',
+  CANCEL = 'oauth:cancel',
+}
+
 export function mergeSharedOAuthProviderSettings(
   providerId: string,
   providers: Record<string, ProviderSettings> | undefined

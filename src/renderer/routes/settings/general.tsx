@@ -13,7 +13,7 @@ import {
   TextInput,
   Title,
 } from '@mantine/core'
-import { type Language, type ProviderInfo, type Settings, Theme } from '@shared/types'
+import { type Language, type ProviderInfo, type Settings, Theme, WatchUIMode } from '@shared/types'
 import { formatFileSize } from '@shared/utils'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { createFileRoute } from '@tanstack/react-router'
@@ -29,6 +29,7 @@ import storage, { StorageKey } from '@/storage'
 import { recoverSessionList } from '@/stores/chatStore'
 import { migrateOnData } from '@/stores/migration'
 import { useSettingsStore } from '@/stores/settingsStore'
+import { useWatchAdaptation } from '@/hooks/useWatchAdaptation'
 
 export const Route = createFileRoute('/settings/general')({
   component: RouteComponent,
@@ -37,6 +38,7 @@ export const Route = createFileRoute('/settings/general')({
 export function RouteComponent() {
   const { t } = useTranslation()
   const { setSettings, ...settings } = useSettingsStore((state) => state)
+  const watchAdaptation = useWatchAdaptation()
 
   return (
     <Stack p="md" gap="xl">
@@ -132,6 +134,9 @@ export function RouteComponent() {
             </Flex>
           </Radio.Group>
         </Stack>
+
+        {/* Watch UI Adaptation */}
+        <WatchAdaptationSection />
       </Stack>
 
       <Divider />
@@ -642,6 +647,130 @@ const ExportLogsSection = () => {
         <Alert className="self-start" variant="light" color="red" title={t('Export failed')} icon={<IconInfoCircle />}>
           <Text size="sm">{exportResult.error || t('Unknown error')}</Text>
         </Alert>
+      )}
+    </Stack>
+  )
+}
+
+/**
+ * 手表UI适配设置组件
+ */
+const WatchAdaptationSection = () => {
+  const { t } = useTranslation()
+  const { setSettings, ...settings } = useSettingsStore((state) => state)
+  const watchAdaptation = useWatchAdaptation()
+
+  const watchSettings = settings.watchAdaptation || {
+    enabled: true,
+    mode: WatchUIMode.Auto,
+    scale: 1.3,
+    autoDetect: true,
+  }
+
+  const updateWatchSettings = (updates: Partial<typeof watchSettings>) => {
+    setSettings({
+      watchAdaptation: {
+        ...watchSettings,
+        ...updates,
+      },
+    })
+  }
+
+  return (
+    <Stack gap="md" mt="md">
+      <Divider />
+
+      <Stack gap="xs">
+        <Title order={5}>{t('Watch UI Adaptation')}</Title>
+        <Text c="chatbox-tertiary" size="sm">
+          {t('Optimize UI display for smartwatch screens like OPPO Watch 2')}
+        </Text>
+      </Stack>
+
+      {/* 检测状态显示 */}
+      {watchAdaptation.isWatchResolution && (
+        <Alert variant="light" color="blue" icon={<IconInfoCircle />} className="self-start">
+          <Text size="sm">
+            {t('Watch resolution detected: {{width}}x{{height}}', {
+              width: watchAdaptation.screenInfo.width,
+              height: watchAdaptation.screenInfo.height,
+            })}
+          </Text>
+        </Alert>
+      )}
+
+      {/* 启用手表适配 */}
+      <Switch
+        label={t('Enable watch UI adaptation')}
+        checked={watchSettings.enabled}
+        onChange={(e) => updateWatchSettings({ enabled: e.currentTarget.checked })}
+      />
+
+      {watchSettings.enabled && (
+        <>
+          {/* 适配模式 */}
+          <AdaptiveSelect
+            maw={320}
+            comboboxProps={{ withinPortal: true, withArrow: true }}
+            label={t('Adaptation Mode')}
+            styles={{
+              label: {
+                fontWeight: 400,
+              },
+            }}
+            data={[
+              { value: `${WatchUIMode.Auto}`, label: t('Auto Detect') },
+              { value: `${WatchUIMode.Enabled}`, label: t('Always Enabled') },
+              { value: `${WatchUIMode.Disabled}`, label: t('Always Disabled') },
+            ]}
+            value={`${watchSettings.mode}`}
+            onChange={(val) => {
+              if (val) {
+                updateWatchSettings({ mode: parseInt(val) as WatchUIMode })
+              }
+            }}
+          />
+
+          {/* 自动检测开关（仅在自动模式下显示） */}
+          {watchSettings.mode === WatchUIMode.Auto && (
+            <Switch
+              label={t('Auto-detect watch resolution')}
+              checked={watchSettings.autoDetect !== false}
+              onChange={(e) => updateWatchSettings({ autoDetect: e.currentTarget.checked })}
+            />
+          )}
+
+          {/* 缩放比例滑块 */}
+          <Stack>
+            <Text>{t('UI Scale')}</Text>
+            <LazySlider
+              step={0.1}
+              min={1.0}
+              max={2.0}
+              maw={320}
+              marks={[
+                { value: 1.0, label: '1.0x' },
+                { value: 1.3, label: '1.3x' },
+                { value: 1.5, label: '1.5x' },
+                { value: 2.0, label: '2.0x' },
+              ]}
+              value={watchSettings.scale}
+              onChange={(val) => updateWatchSettings({ scale: val })}
+            />
+            <Text size="xs" c="chatbox-tertiary">
+              {t('Current scale: {{scale}}x', { scale: watchSettings.scale.toFixed(1) })}
+            </Text>
+          </Stack>
+
+          {/* 当前状态 */}
+          <Alert variant="light" color={watchAdaptation.isEnabled ? 'green' : 'gray'} className="self-start">
+            <Text size="sm">
+              {watchAdaptation.isEnabled
+                ? t('Watch mode active - Scale: {{scale}}x', { scale: watchAdaptation.scale.toFixed(1) })
+                : t('Watch mode inactive')}
+            </Text>
+          </Alert>
+        </>
       )}
     </Stack>
   )

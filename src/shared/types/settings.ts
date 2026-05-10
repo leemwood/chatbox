@@ -282,6 +282,23 @@ export enum Theme {
   System,
 }
 
+// 手表UI适配模式
+export enum WatchUIMode {
+  Auto,      // 自动检测
+  Enabled,   // 强制启用
+  Disabled,  // 强制禁用
+}
+
+// 手表适配设置
+export const WatchAdaptationSettingsSchema = z.object({
+  enabled: z.boolean().default(true),
+  mode: z.nativeEnum(WatchUIMode).default(WatchUIMode.Auto),
+  scale: z.number().min(1.0).max(2.0).default(1.3),
+  autoDetect: z.boolean().default(true),
+})
+
+export type WatchAdaptationSettings = z.infer<typeof WatchAdaptationSettingsSchema>
+
 export const SettingsSchema = GlobalSessionSettingsSchema.extend({
   providers: z.record(z.string(), ProviderSettingsSchema).optional().catch(undefined),
   customProviders: z.array(CustomProviderBaseInfoSchema).optional().catch(undefined),
@@ -405,6 +422,9 @@ export const SettingsSchema = GlobalSessionSettingsSchema.extend({
     enabledSkillNames: [],
     translationEnabled: true,
   }),
+
+  // 手表UI适配设置
+  watchAdaptation: WatchAdaptationSettingsSchema,
 })
 
 // TODO: provider的 base info 和 settings混在一起了，可以考虑像 session settings 和 global settings一样拆开

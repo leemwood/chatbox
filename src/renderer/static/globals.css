@@ -310,3 +310,623 @@ div[data-vaul-overlay] {
 div[data-vaul-drawer] {
   z-index: 2000;
 }
+
+/* ========================================
+   Watch UI Adaptation Styles
+   手表UI适配样式
+   ======================================== */
+
+:root {
+  /* 手表UI缩放变量 - 默认不缩放 */
+  --watch-scale: 1;
+  --watch-font-scale: 1;
+}
+
+/* 手表模式激活时的全局样式 */
+[data-watch-mode="true"] {
+  /* 增大基础字体大小 */
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的组件缩放 */
+[data-watch-mode="true"] .mantine-Button-root {
+  transform: scale(var(--watch-scale));
+  transform-origin: center;
+}
+
+[data-watch-mode="true"] .mantine-TextInput-root,
+[data-watch-mode="true"] .mantine-Textarea-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-TextInput-input,
+[data-watch-mode="true"] .mantine-Textarea-input {
+  min-height: calc(36px * var(--watch-scale));
+  padding: calc(8px * var(--watch-scale)) calc(12px * var(--watch-scale));
+}
+
+/* 手表模式下的选择器 */
+[data-watch-mode="true"] .mantine-Select-dropdown,
+[data-watch-mode="true"] .mantine-Combobox-dropdown {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Select-option,
+[data-watch-mode="true"] .mantine-Combobox-option {
+  padding: calc(8px * var(--watch-scale)) calc(12px * var(--watch-scale));
+}
+
+/* 手表模式下的滑块 */
+[data-watch-mode="true"] .mantine-Slider-track {
+  height: calc(4px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Slider-thumb {
+  width: calc(16px * var(--watch-scale));
+  height: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的开关 */
+[data-watch-mode="true"] .mantine-Switch-track {
+  width: calc(36px * var(--watch-scale));
+  height: calc(20px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Switch-thumb {
+  width: calc(14px * var(--watch-scale));
+  height: calc(14px * var(--watch-scale));
+}
+
+/* 手表模式下的复选框和单选框 */
+[data-watch-mode="true"] .mantine-Checkbox-input,
+[data-watch-mode="true"] .mantine-Radio-radio {
+  width: calc(20px * var(--watch-scale));
+  height: calc(20px * var(--watch-scale));
+}
+
+/* 手表模式下的提示框 */
+[data-watch-mode="true"] .mantine-Alert-root {
+  padding: calc(12px * var(--watch-scale));
+}
+
+/* 手表模式下的菜单 */
+[data-watch-mode="true"] .mantine-Menu-dropdown {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Menu-item {
+  padding: calc(10px * var(--watch-scale)) calc(14px * var(--watch-scale));
+}
+
+/* 手表模式下的模态框 */
+[data-watch-mode="true"] .mantine-Modal-content {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Modal-header {
+  padding: calc(16px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Modal-body {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的卡片 */
+[data-watch-mode="true"] .mantine-Card-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的列表项 */
+[data-watch-mode="true"] .mantine-List-item {
+  padding: calc(8px * var(--watch-scale)) 0;
+}
+
+/* 手表模式下的标签 */
+[data-watch-mode="true"] .mantine-Badge-root {
+  font-size: calc(12px * var(--watch-font-scale));
+  padding: calc(4px * var(--watch-scale)) calc(8px * var(--watch-scale));
+}
+
+/* 手表模式下的工具提示 */
+[data-watch-mode="true"] .mantine-Tooltip-tooltip {
+  font-size: calc(12px * var(--watch-font-scale));
+  padding: calc(6px * var(--watch-scale)) calc(10px * var(--watch-scale));
+}
+
+/* 手表模式下的分页 */
+[data-watch-mode="true"] .mantine-Pagination-control {
+  min-width: calc(32px * var(--watch-scale));
+  height: calc(32px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的步骤条 */
+[data-watch-mode="true"] .mantine-Stepper-stepIcon {
+  width: calc(32px * var(--watch-scale));
+  height: calc(32px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Stepper-stepLabel {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的分段控制器 */
+[data-watch-mode="true"] .mantine-SegmentedControl-control {
+  height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的标签页 */
+[data-watch-mode="true"] .mantine-Tabs-tab {
+  padding: calc(10px * var(--watch-scale)) calc(16px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的折叠面板 */
+[data-watch-mode="true"] .mantine-Accordion-control {
+  padding: calc(12px * var(--watch-scale)) calc(16px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Accordion-panel {
+  padding: calc(12px * var(--watch-scale)) calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的导航栏 */
+[data-watch-mode="true"] .mantine-Navbar-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的头部 */
+[data-watch-mode="true"] .mantine-Header-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的侧边栏 */
+[data-watch-mode="true"] .mantine-Aside-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的底部栏 */
+[data-watch-mode="true"] .mantine-Footer-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的滚动区域 */
+[data-watch-mode="true"] .mantine-ScrollArea-scrollbar {
+  width: calc(12px * var(--watch-scale));
+}
+
+/* 手表模式下的下拉菜单 */
+[data-watch-mode="true"] .mantine-Autocomplete-dropdown,
+[data-watch-mode="true"] .mantine-MultiSelect-dropdown {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的日期选择器 */
+[data-watch-mode="true"] .mantine-DatePicker-day,
+[data-watch-mode="true"] .mantine-DatePickerInput-day {
+  width: calc(36px * var(--watch-scale));
+  height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的时间选择器 */
+[data-watch-mode="true"] .mantine-TimeInput-input {
+  min-height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的数字输入 */
+[data-watch-mode="true"] .mantine-NumberInput-input {
+  min-height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的密码输入 */
+[data-watch-mode="true"] .mantine-PasswordInput-input {
+  min-height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的文件输入 */
+[data-watch-mode="true"] .mantine-FileInput-input {
+  min-height: calc(36px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的颜色选择器 */
+[data-watch-mode="true"] .mantine-ColorInput-input {
+  min-height: calc(36px * var(--watch-scale));
+}
+
+/* 手表模式下的富文本编辑器 */
+[data-watch-mode="true"] .mantine-RichTextEditor-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的代码编辑器 */
+[data-watch-mode="true"] .mantine-CodeHighlight-root {
+  font-size: calc(13px * var(--watch-font-scale));
+}
+
+/* 手表模式下的表格 */
+[data-watch-mode="true"] .mantine-Table-th,
+[data-watch-mode="true"] .mantine-Table-td {
+  padding: calc(12px * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的树形控件 */
+[data-watch-mode="true"] .mantine-Tree-node {
+  padding: calc(6px * var(--watch-scale)) 0;
+}
+
+/* 手表模式下的传送门 */
+[data-watch-mode="true"] .mantine-Portal-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的通知 */
+[data-watch-mode="true"] .mantine-Notification-root {
+  padding: calc(16px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Notification-title {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Notification-description {
+  font-size: calc(13px * var(--watch-font-scale));
+}
+
+/* 手表模式下的加载指示器 */
+[data-watch-mode="true"] .mantine-Loader-root {
+  width: calc(24px * var(--watch-scale)) !important;
+  height: calc(24px * var(--watch-scale)) !important;
+}
+
+/* 手表模式下的骨架屏 */
+[data-watch-mode="true"] .mantine-Skeleton-root {
+  border-radius: calc(4px * var(--watch-scale));
+}
+
+/* 手表模式下的进度条 */
+[data-watch-mode="true"] .mantine-Progress-bar {
+  height: calc(8px * var(--watch-scale));
+}
+
+/* 手表模式下的环形进度条 */
+[data-watch-mode="true"] .mantine-RingProgress-root {
+  width: calc(120px * var(--watch-scale));
+  height: calc(120px * var(--watch-scale));
+}
+
+/* 手表模式下的评分 */
+[data-watch-mode="true"] .mantine-Rating-star {
+  width: calc(20px * var(--watch-scale));
+  height: calc(20px * var(--watch-scale));
+}
+
+/* 手表模式下的滑块范围 */
+[data-watch-mode="true"] .mantine-RangeSlider-track {
+  height: calc(4px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-RangeSlider-thumb {
+  width: calc(16px * var(--watch-scale));
+  height: calc(16px * var(--watch-scale));
+}
+
+/* 手表模式下的头像 */
+[data-watch-mode="true"] .mantine-Avatar-root {
+  width: calc(40px * var(--watch-scale));
+  height: calc(40px * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Avatar-placeholder {
+  font-size: calc(16px * var(--watch-font-scale));
+}
+
+/* 手表模式下的动作图标 */
+[data-watch-mode="true"] .mantine-ActionIcon-root {
+  width: calc(32px * var(--watch-scale));
+  height: calc(32px * var(--watch-scale));
+}
+
+/* 手表模式下的关闭按钮 */
+[data-watch-mode="true"] .mantine-CloseButton-root {
+  width: calc(32px * var(--watch-scale));
+  height: calc(32px * var(--watch-scale));
+}
+
+/* 手表模式下的复制按钮 */
+[data-watch-mode="true"] .mantine-CopyButton-root {
+  width: calc(32px * var(--watch-scale));
+  height: calc(32px * var(--watch-scale));
+}
+
+/* 手表模式下的汉堡菜单按钮 */
+[data-watch-mode="true"] .mantine-Burger-root {
+  width: calc(24px * var(--watch-scale));
+  height: calc(24px * var(--watch-scale));
+}
+
+/* 手表模式下的指示器 */
+[data-watch-mode="true"] .mantine-Indicator-indicator {
+  min-width: calc(16px * var(--watch-scale));
+  height: calc(16px * var(--watch-scale));
+  font-size: calc(10px * var(--watch-font-scale));
+}
+
+/* 手表模式下的键盘快捷键显示 */
+[data-watch-mode="true"] .mantine-Kbd-root {
+  font-size: calc(12px * var(--watch-font-scale));
+  padding: calc(2px * var(--watch-scale)) calc(6px * var(--watch-scale));
+}
+
+/* 手表模式下的标记 */
+[data-watch-mode="true"] .mantine-Mark-root {
+  padding: calc(2px * var(--watch-scale)) calc(4px * var(--watch-scale));
+}
+
+/* 手表模式下的高亮 */
+[data-watch-mode="true"] .mantine-Highlight-highlight {
+  padding: calc(2px * var(--watch-scale)) 0;
+}
+
+/* 手表模式下的文字 */
+[data-watch-mode="true"] .mantine-Text-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-root {
+  font-size: calc(var(--mantine-h1-font-size) * var(--watch-font-scale));
+}
+
+/* 手表模式下的分组 */
+[data-watch-mode="true"] .mantine-Group-root {
+  gap: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的堆叠 */
+[data-watch-mode="true"] .mantine-Stack-root {
+  gap: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的简单网格 */
+[data-watch-mode="true"] .mantine-SimpleGrid-root {
+  gap: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的弹性布局 */
+[data-watch-mode="true"] .mantine-Flex-root {
+  gap: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的中心布局 */
+[data-watch-mode="true"] .mantine-Center-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的容器 */
+[data-watch-mode="true"] .mantine-Container-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的盒子 */
+[data-watch-mode="true"] .mantine-Box-root {
+  padding: calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+/* 手表模式下的分隔线 */
+[data-watch-mode="true"] .mantine-Divider-root {
+  margin: calc(var(--mantine-spacing-md) * var(--watch-scale)) 0;
+}
+
+/* 手表模式下的间距 */
+[data-watch-mode="true"] .mantine-Space-root {
+  height: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的纸面效果 */
+[data-watch-mode="true"] .mantine-Paper-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的背景图案 */
+[data-watch-mode="true"] .mantine-BackgroundImage-root {
+  border-radius: calc(var(--mantine-radius-md) * var(--watch-scale));
+}
+
+/* 手表模式下的图片 */
+[data-watch-mode="true"] .mantine-Image-root {
+  border-radius: calc(var(--mantine-radius-md) * var(--watch-scale));
+}
+
+/* 手表模式下的模糊效果 */
+[data-watch-mode="true"] .mantine-Overlay-root {
+  backdrop-filter: blur(calc(4px * var(--watch-scale)));
+}
+
+/* 手表模式下的弹出层 */
+[data-watch-mode="true"] .mantine-Popover-dropdown {
+  padding: calc(var(--mantine-spacing-sm) * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的悬浮提示 */
+[data-watch-mode="true"] .mantine-HoverCard-dropdown {
+  padding: calc(var(--mantine-spacing-sm) * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的抽屉 */
+[data-watch-mode="true"] .mantine-Drawer-content {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Drawer-header {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Drawer-body {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的对话框 */
+[data-watch-mode="true"] .mantine-Dialog-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的汉堡菜单 */
+[data-watch-mode="true"] .mantine-Burger-burger {
+  width: calc(20px * var(--watch-scale));
+  height: calc(2px * var(--watch-scale));
+}
+
+/* 手表模式下的导航链接 */
+[data-watch-mode="true"] .mantine-NavLink-root {
+  padding: calc(var(--mantine-spacing-sm) * var(--watch-scale)) calc(var(--mantine-spacing-md) * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的分页 */
+[data-watch-mode="true"] .mantine-Pagination-root {
+  gap: calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+/* 手表模式下的步骤 */
+[data-watch-mode="true"] .mantine-Stepper-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+/* 手表模式下的时间线 */
+[data-watch-mode="true"] .mantine-Timeline-item {
+  padding-bottom: calc(var(--mantine-spacing-md) * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-Timeline-itemBullet {
+  width: calc(20px * var(--watch-scale));
+  height: calc(20px * var(--watch-scale));
+}
+
+/* 手表模式下的树 */
+[data-watch-mode="true"] .mantine-Tree-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的文字输入 */
+[data-watch-mode="true"] .mantine-TextInput-wrapper,
+[data-watch-mode="true"] .mantine-Textarea-wrapper {
+  margin-bottom: calc(var(--mantine-spacing-sm) * var(--watch-scale));
+}
+
+/* 手表模式下的标签 */
+[data-watch-mode="true"] .mantine-InputWrapper-label {
+  font-size: calc(14px * var(--watch-font-scale));
+  margin-bottom: calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-InputWrapper-description {
+  font-size: calc(12px * var(--watch-font-scale));
+  margin-bottom: calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+[data-watch-mode="true"] .mantine-InputWrapper-error {
+  font-size: calc(12px * var(--watch-font-scale));
+  margin-top: calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+/* 手表模式下的输入 */
+[data-watch-mode="true"] .mantine-Input-input {
+  min-height: calc(36px * var(--watch-scale));
+  padding: calc(var(--mantine-spacing-xs) * var(--watch-scale)) calc(var(--mantine-spacing-sm) * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的区块 */
+[data-watch-mode="true"] .mantine-Blockquote-root {
+  padding: calc(var(--mantine-spacing-md) * var(--watch-scale));
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的代码 */
+[data-watch-mode="true"] .mantine-Code-root {
+  font-size: calc(12px * var(--watch-font-scale));
+  padding: calc(2px * var(--watch-scale)) calc(6px * var(--watch-scale));
+}
+
+/* 手表模式下的列表 */
+[data-watch-mode="true"] .mantine-List-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-List-item {
+  padding: calc(var(--mantine-spacing-xs) * var(--watch-scale)) 0;
+}
+
+/* 手表模式下的表格 */
+[data-watch-mode="true"] .mantine-Table-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的排版 */
+[data-watch-mode="true"] .mantine-TypographyStylesProvider-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的锚点 */
+[data-watch-mode="true"] .mantine-Anchor-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的面包屑 */
+[data-watch-mode="true"] .mantine-Breadcrumbs-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Breadcrumbs-separator {
+  margin: 0 calc(var(--mantine-spacing-xs) * var(--watch-scale));
+}
+
+/* 手表模式下的标题 */
+[data-watch-mode="true"] .mantine-Title-root {
+  font-size: calc(var(--mantine-h1-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-1 {
+  font-size: calc(var(--mantine-h1-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-2 {
+  font-size: calc(var(--mantine-h2-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-3 {
+  font-size: calc(var(--mantine-h3-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-4 {
+  font-size: calc(var(--mantine-h4-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-5 {
+  font-size: calc(var(--mantine-h5-font-size) * var(--watch-font-scale));
+}
+
+[data-watch-mode="true"] .mantine-Title-order-6 {
+  font-size: calc(var(--mantine-h6-font-size) * var(--watch-font-scale));
+}
+
+/* 手表模式下的文字 */
+[data-watch-mode="true"] .mantine-Text-root {
+  font-size: calc(14px * var(--watch-font-scale));
+}
+
+/* 手表模式下的响应式文字大小 */
+@media (max-width: 500px) and (max-height: 550px) {
+  :root {
+    --watch-scale: 1.3;
+    --watch-font-scale: 1.3;
+  }
+}

@@ -15,7 +15,7 @@ import { useCopied } from '@/hooks/useCopied'
 import { navigateToSettings } from '@/modals/Settings'
 import { trackingEvent } from '@/packages/event'
 import { buildChatboxUrl } from '@/packages/remote'
-import { translateTexts } from '@/packages/translation'
+// import { translateTexts } from '@/packages/translation'
 import platform from '@/platform'
 import * as settingActions from '@/stores/settingActions'
 import { useLanguage, useSettingsStore } from '@/stores/settingsStore'
@@ -168,8 +168,8 @@ export default function MessageErrTips(props: { msg: Message; onRetry?: () => vo
     }
     setIsTranslating(true)
     try {
-      const [result] = await translateTexts([errorMessage], language, { sourceLang: 'en' })
-      setTranslatedText(result ?? null)
+      // const [result] = await translateTexts([errorMessage], language, { sourceLang: 'en' })
+      // setTranslatedText(result ?? null)
     } catch {
       // ignore
     } finally {

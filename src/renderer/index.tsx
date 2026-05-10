@@ -48,6 +48,9 @@ import { initSettingsStore } from './stores/settingsStore'
 // Token estimation system initialization (runs in all environments)
 import('./setup/token_estimation_init')
 
+// 手表UI适配初始化
+import('./setup/watch_adaptation_init')
+
 // 引入移动端安全区域代码，主要为了解决异形屏幕的问题
 if (CHATBOX_BUILD_TARGET === 'mobile_app' && CHATBOX_BUILD_PLATFORM === 'ios') {
   import('./setup/mobile_safe_area')

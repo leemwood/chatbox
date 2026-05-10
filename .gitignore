@@ -188,3 +188,14 @@ storybook-static
 .gstack/
 .worktrees/
 .claude/worktrees/
+
+# Capacitor / Android
+/android/.gradle
+/android/build
+/android/local.properties
+/android/init.gradle
+/android/app/build
+/android/app/src/main/assets/public
+/android/app/src/main/assets/capacitor.config.json
+/android/app/src/main/assets/capacitor.plugins.json
+/android/capacitor-cordova-android-plugins
